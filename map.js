@@ -100,7 +100,7 @@ function clickReset() {
 attrib = new L.Control.Attribution
 attrib.setPrefix("")
 attrStr = '<a href="#" onclick="javascript:clickHome();">home</a> | '
-attrStr += '<a href="#" onclick="javascript:clickDemo();">tour</a> | '
+// attrStr += '<a href="#" onclick="javascript:clickDemo();">tour</a> | '
 attrStr += '<a href="#" onclick="javascript:clickReset();">reset</a>'
 attrib.addAttribution(attrStr)
 worldMap.addControl(attrib)
