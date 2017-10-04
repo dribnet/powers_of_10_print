@@ -408,7 +408,7 @@ function render_char(p5, c, x_pos, y_pos, char_width, char_height) {
       for(var i=0; i<8; i++) {
         var cur_x = x_pos + i * pixel_width;
         if(char_map[j][i] != " ") {
-          p5.rect(cur_x, cur_y, pixel_width, pixel_height);
+          p5.rect(cur_x, cur_y, 0.5+pixel_width, 0.5+pixel_height);
         }
       }
     }
@@ -418,9 +418,9 @@ function render_char(p5, c, x_pos, y_pos, char_width, char_height) {
   }
 }
 
-
-var offset_x = 12;
-var offset_y = -44;
+var native_charsize = 22;
+var offset_x = 3.0;
+var offset_y = -35;
 // at zoom=0 each slash is 16x16
 function drawLayer(p5, slashsize, x1, x2, y1, y2, z, line_color, thinness, is_top) {
   var noiseScale=1/48.0;
@@ -441,10 +441,10 @@ function drawLayer(p5, slashsize, x1, x2, y1, y2, z, line_color, thinness, is_to
   p5.fill(line_color);
 
   for(var x=startx; x<endx; x+=slashsize) {
-    var n_x = x / 16;
+    var n_x = x / native_charsize;
     var x_pos = p5.map(x, x1, x2, 0, 256);
     for(var y=starty; y<endy; y+=slashsize) {
-      var n_y = y / 16;
+      var n_y = y / native_charsize;
       var y_pos = p5.map(y, y1, y2, 0, 256);
       if(n_x - offset_x < 0 || n_x-offset_x >= 40 ||
          n_y - offset_y < 0 || n_y-offset_y >= 25) {
@@ -497,7 +497,7 @@ function drawGrid(p5, x1, x2, y1, y2, z, zoom) {
 
   var drawStack = [];
 
-  drawStack.push([16, x1, x2, y1, y2, light_blue, 1, true])
+  drawStack.push([native_charsize, x1, x2, y1, y2, light_blue, 1, true])
 
   // drawLayer(p5, 16, x1, x2, y1, y2);
   var nextLayerDown = 3.5;
@@ -512,7 +512,7 @@ function drawGrid(p5, x1, x2, y1, y2, z, zoom) {
       nextLayerDown += nextLayerIncrement;
       nextLayerTarget = Math.floor(nextLayerDown);
       nextLayerIncrement += 0.8;
-      var tileSize = 16 / Math.pow(2, i);
+      var tileSize = native_charsize / Math.pow(2, i);
       drawStack.push([tileSize, x1, x2, y1, y2, curBlue, curLineLayer, false])
       curLineLayer = curLineLayer + 1;
     }
