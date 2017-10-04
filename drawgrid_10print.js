@@ -420,7 +420,7 @@ function render_char(p5, c, x_pos, y_pos, char_width, char_height) {
 
 var native_charsize = 22;
 var offset_x = 3.0;
-var offset_y = -35;
+var offset_y = 11.0;
 // at zoom=0 each slash is 16x16
 function drawLayer(p5, slashsize, x1, x2, y1, y2, z, line_color, thinness, is_top) {
   var noiseScale=1/48.0;
