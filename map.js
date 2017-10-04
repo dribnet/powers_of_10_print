@@ -1,8 +1,15 @@
+var myCRS = L.extend({}, L.CRS.Simple, {
+  transformation: new L.Transformation(1, 0,
+    // -1, // works like expected
+    1, // image travels while zooming
+    0)
+});
+
 var worldMap = new L.Map('map', {  
   continuousWorld:true, 
   minZoom: 0,
   maxZoom: 45,
-  crs: L.CRS.Simple,
+  crs: myCRS,
   attributionControl: false,
   center: [512, 512], 
   zoom: 0});
@@ -27,7 +34,7 @@ var s = function( p ) {
       var t_size = p._L_size;
       var zoom = p._L_zoom;
       var m_x1 = nw.lng;
-      var m_y1 = -nw.lat;
+      var m_y1 = nw.lat;
       var m_x2 = m_x1 + t_size;
       var m_y2 = m_y1 + t_size;
       var depth = p._L_depth;
