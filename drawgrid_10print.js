@@ -500,8 +500,8 @@ function drawGrid(p5, x1, x2, y1, y2, z, zoom) {
   drawStack.push([native_charsize, x1, x2, y1, y2, light_blue, 1, true])
 
   // drawLayer(p5, 16, x1, x2, y1, y2);
-  var nextLayerDown = 3.5;
-  var nextLayerIncrement = 3.6;
+  var nextLayerDown = 1.5;
+  var nextLayerIncrement = 1.6;
   var nextLayerTarget = Math.floor(nextLayerDown);
   var alpha = 1.0;
   var curLineLayer = 2;
